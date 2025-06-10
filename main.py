@@ -1,25 +1,28 @@
-from fastapi import FastAPI, Request, Form, RedirectResponse
-from fastapi.staticfiles import StaticFiles
+from fastapi import FastAPI, Request, Form
 from fastapi.templating import Jinja2Templates
+from fastapi.responses import RedirectResponse
+from fastapi.staticfiles import StaticFiles
+import os
 
-app = FastAPI()
-app.mount("/static", StaticFiles(directory="static"), name="static")
-templates = Jinja2Templates(directory="templates")
+todo_app = FastAPI()
 
-# In-memory store for tasks
+BASE_DIR = os.path.dirname(__file__)
+templates = Jinja2Templates(directory=os.path.join(BASE_DIR, "templates"))
+todo_app.mount("/static", StaticFiles(directory=os.path.join(BASE_DIR, "static")), name="static")
+
 todos = []
 
-@app.get("/")
-def home(request: Request):
+@todo_app.get("/")
+def index(request: Request):
     return templates.TemplateResponse("index.html", {"request": request, "todos": todos})
 
-@app.post("/add")
-def add_task(task: str = Form(...)):
+@todo_app.post("/add")
+def add(task: str = Form(...)):
     todos.append(task)
-    return RedirectResponse("/", status_code=303)
+    return RedirectResponse(url="/gui/todo/", status_code=303)
 
-@app.post("/delete")
-def delete_task(task: str = Form(...)):
+@todo_app.post("/delete")
+def delete(task: str = Form(...)):
     if task in todos:
         todos.remove(task)
-    return RedirectResponse("/", status_code=303)
+    return RedirectResponse(url="/gui/todo/", status_code=303)
