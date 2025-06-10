@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FastAPI ToDo App</title>
+</head>
+<body>
+  <h1>FastAPI ToDo List</h1>
+  <form action="/add" method="post">
+    <input type="text" name="task" required>
+    <button type="submit">Add Task</button>
+  </form>
+  <ul>
+    {% for task in todos %}
+    <li>
+      {{ task }}
+      <form action="/delete" method="post" style="display:inline;">
+        <input type="hidden" name="task" value="{{ task }}">
+        <button type="submit">❌</button>
+      </form>
+    </li>
+    {% endfor %}
+  </ul>
+</body>
+</html>
