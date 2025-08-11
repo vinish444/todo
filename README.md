@@ -1,8 +1,13 @@
 
 # Orchestron
 
-**Orchestron** is an automation and validation framework designed to execute network device validations, parse command outputs, and generate structured reports.  
-It uses YAML-driven runbooks to define validation workflows, supports multi-vendor models, and enables reusable parser/validator logic.
+**Orchestron** is an interactive and user friendly automation and validation framework designed to execute network device validations, parse command outputs, and generate structured reports.
+
+It uses YAML-driven runbooks to define workflows for both **validation** and **configuration** tasks.
+- **Validation runbooks** handle checks like firmware, link, and scorecard validations.
+- **Configuration runbooks** automate configuration-related operations, such as setting up device clocks, DDOS devices etc.
+
+The framework supports multi-vendor models and enables reusable parser/validator logic.
 
 ---
 
