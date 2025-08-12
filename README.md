@@ -94,7 +94,7 @@ cd Orchestron
 2. **Create a Python virtual environment**
 ```bash
 python3 -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+source venv/bin/activate  # Windows: venv\Scripts\activate
 ```
 
 3. **Install dependencies**
@@ -103,14 +103,28 @@ pip install -r requirements.txt
 ```
 
 4. **Setup environment configs**
-- Place your environment-specific files in `env/`.
-- Configure vendor and model mappings in `vendor/vendor_data.yaml`.
+- Place environment-specific files in `env/`.
+- Configure vendor/model mappings in `vendor/vendor_data.yaml`.
+
+5. **Configure `env/config.yaml`** (**Mandatory**)
+Edit `env/config.yaml` to set paths according to your local environment.
+
+Example:
+```yaml
+REGION_PATH: net                # Path to your region data folder (e.g., 'net' or 'autonet')
+JIT_PATH: /path/to/jitpw        # Absolute path to your JIT password binary/tool
+firmware_path: firmware         # Path to firmware-related data
+```
+
+- **REGION_PATH** – Folder containing region-specific topology/inventory.
+- **JIT_PATH** – Path to JIT password executable/tool.
+- **firmware_path** – Folder for firmware mapping/config.
 
 ---
 
 ## 📜 Usage
 
-### **Run the CLI**
+Run the CLI:
 ```bash
 python main.py
 ```
