@@ -55,7 +55,7 @@ pip install --upgrade pip pyyaml
 Run the launcher:
 
 ```bash
-python loader.py
+python main.py
 ```
 
 You’ll see:
@@ -80,7 +80,7 @@ Q. Quit
 ## ⚙️ CLI Options
 
 ```bash
-python loader.py --help
+python main.py --help
 ```
 
 Key flags:
@@ -100,7 +100,7 @@ Key flags:
 Everything after `--` is passed directly to the project:
 
 ```bash
-python loader.py --project auth_demo -- -u alice -p
+python main.py --project auth_demo -- -u alice -p
 ```
 
 ---
@@ -166,7 +166,7 @@ requests>=2.31
 ### Step 5: Install requirements
 
 ```bash
-python loader.py --update-section tools
+python main.py --update-section tools
 ```
 
 Now `my_tool` appears in the menu.
@@ -193,25 +193,25 @@ Selecting a project opens its README in your default browser.
 Run with defaults (from YAML):
 
 ```bash
-python loader.py --project auth_demo
+python main.py --project auth_demo
 ```
 
 Override defaults:
 
 ```bash
-python loader.py --project auth_demo -- -u admin -p
+python main.py --project auth_demo -- -u admin -p
 ```
 
 Install/update all requirements:
 
 ```bash
-python loader.py --update
+python main.py --update
 ```
 
 Open docs for a tool:
 
 ```bash
-python loader.py --open-readme auth_demo
+python main.py --open-readme auth_demo
 ```
 
 ---
