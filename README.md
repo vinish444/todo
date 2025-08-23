@@ -19,14 +19,14 @@ It lets you group tools into sections (e.g., `tools`, `pre-bootstrap`, `bootstra
 
 ## 📦 Installation
 
-### Clone the repo
+### 1. Clone the repo
 
 ```bash
 git clone https://github.com/your-org/onecli.git
 cd onecli
 ```
 
-### Create a shared virtual environment
+### 2. Create a shared virtual environment
 
 #### Linux / macOS
 
@@ -42,20 +42,44 @@ python -m venv .venv
 .\.venv\Scripts\activate
 ```
 
-### Install launcher dependencies
+### 3. Install setuptools and wheel (if missing)
 
 ```bash
-pip install --upgrade pip pyyaml
+pip install --upgrade pip setuptools wheel
 ```
+
+### 4. Install the tool
+
+#### Development mode (recommended during coding)
+
+```bash
+pip install -e .
+```
+
+This links the local code. Any edits to `onecli.py` are reflected immediately.
+
+#### Normal install (for end users)
+
+```bash
+pip install .
+```
+
+This copies the code into site-packages. Reinstall required after edits.
 
 ---
 
 ## 🧭 Usage
 
-Run the launcher:
+After installation, you can simply run:
 
 ```bash
-python main.py
+onecli
+```
+
+instead of:
+
+```bash
+python onecli.py
 ```
 
 You’ll see:
@@ -80,7 +104,7 @@ Q. Quit
 ## ⚙️ CLI Options
 
 ```bash
-python main.py --help
+onecli --help
 ```
 
 Key flags:
@@ -100,7 +124,7 @@ Key flags:
 Everything after `--` is passed directly to the project:
 
 ```bash
-python main.py --project auth_demo -- -u alice -p
+onecli --project auth_demo -- -u alice -p
 ```
 
 ---
@@ -166,7 +190,7 @@ requests>=2.31
 ### Step 5: Install requirements
 
 ```bash
-python main.py --update-section tools
+onecli --update-section tools
 ```
 
 Now `my_tool` appears in the menu.
@@ -193,25 +217,25 @@ Selecting a project opens its README in your default browser.
 Run with defaults (from YAML):
 
 ```bash
-python main.py --project auth_demo
+onecli --project auth_demo
 ```
 
 Override defaults:
 
 ```bash
-python main.py --project auth_demo -- -u admin -p
+onecli --project auth_demo -- -u admin -p
 ```
 
 Install/update all requirements:
 
 ```bash
-python main.py --update
+onecli --update
 ```
 
 Open docs for a tool:
 
 ```bash
-python main.py --open-readme auth_demo
+onecli --open-readme auth_demo
 ```
 
 ---
