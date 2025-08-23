@@ -31,21 +31,21 @@ cd onecli
 #### Linux / macOS
 
 ```bash
-python -m venv .venv
-. .venv/bin/activate
+python -m venv onecli
+. onecli/bin/activate
 ```
 
 #### Windows
 
-```bash
-python -m venv .venv
-.\.venv\Scripts\activate
+```powershell
+python -m venv onecli
+onecli\Scripts\activate
 ```
 
-### 3. Install setuptools and wheel (if missing)
+### 3. Install dependencies
 
 ```bash
-pip install --upgrade pip setuptools wheel
+pip install -r requirements.txt
 ```
 
 ### 4. Install the tool
@@ -56,30 +56,26 @@ pip install --upgrade pip setuptools wheel
 pip install -e .
 ```
 
-This links the local code. Any edits to `onecli.py` are reflected immediately.
-
 #### Normal install (for end users)
 
 ```bash
 pip install .
 ```
 
-This copies the code into site-packages. Reinstall required after edits.
-
----
-
-## 🧭 Usage
-
-After installation, you can simply run:
+Now you can run:
 
 ```bash
 onecli
 ```
 
-instead of:
+---
+
+## 🧭 Usage
+
+After installation, simply run:
 
 ```bash
-python onecli.py
+onecli
 ```
 
 You’ll see:
